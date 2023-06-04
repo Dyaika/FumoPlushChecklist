@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/signup_fragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.authorisation.SignupFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="center"
+        android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstname_text"
+            android:hint="Имя"
+            android:textColor="@color/maintext"
+            android:fontFamily="@font/nunito_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastname_text"
+            android:hint="Фамилия"
+            android:textColor="@color/maintext"
+            android:fontFamily="@font/nunito_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_text"
+            android:hint="Логин"
+            android:textColor="@color/maintext"
+            android:fontFamily="@font/nunito_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password1_text"
+            android:hint="Пароль"
+            android:textColor="@color/maintext"
+            android:fontFamily="@font/nunito_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password2_text"
+            android:hint="Повторите пароль"
+            android:textColor="@color/maintext"
+            android:fontFamily="@font/nunito_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+        <Button
+            android:id="@+id/signup_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Зарегистрироваться"
+            android:fontFamily="@font/nunito_regular"
+            android:textStyle="bold"
+            android:padding="16dp"/>
+        <TextView
+            android:id="@+id/login_text_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:padding="6dp"
+            android:text="Уже есть аккаунт? Войдите"
+            android:textColor="@color/maintext"
+            android:fontFamily="@font/nunito_regular"/>
+    </LinearLayout>
 
-</FrameLayout>
+
+</LinearLayout>

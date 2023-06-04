@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_fragment"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.authorisation.LoginFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="center"
+        android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_text"
+            android:hint="Логин"
+            android:textColor="@color/maintext"
+            android:fontFamily="@font/nunito_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_text"
+            android:hint="Пароль"
+            android:textColor="@color/maintext"
+            android:fontFamily="@font/nunito_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Войти"
+            android:textStyle="bold"
+            android:fontFamily="@font/nunito_regular"
+            android:padding="16dp"/>
+        <TextView
+            android:id="@+id/signup_text_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:padding="6dp"
+            android:textColor="@color/maintext"
+            android:text="Создать аккаунт"/>
+    </LinearLayout>
 
-</FrameLayout>
+
+</LinearLayout>

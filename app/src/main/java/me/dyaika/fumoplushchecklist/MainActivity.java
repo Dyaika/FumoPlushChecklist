@@ -1,25 +1,49 @@
 package me.dyaika.fumoplushchecklist;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import me.dyaika.fumoplushchecklist.databinding.ActivityMainBinding;
+import me.dyaika.fumoplushchecklist.model.AccountViewModel;
+import me.dyaika.fumoplushchecklist.model.ItemsViewModel;
+import me.dyaika.fumoplushchecklist.model.MySecurity;
+import me.dyaika.fumoplushchecklist.pojo.User;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private AccountViewModel accountViewModel;
+    private ItemsViewModel itemsViewModel;
+    private ViewModelProvider viewModelProvider;
+    private boolean logged_in;
+    private User user;
+    public ViewModelProvider getViewModelProvider() {
+        initViewModelProvider();
+        return viewModelProvider;
+    }
+    private void initViewModelProvider() {
+        if (viewModelProvider == null){
+            viewModelProvider = new ViewModelProvider(this);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        initViewModelProvider();
+        accountViewModel = viewModelProvider.get(AccountViewModel.class);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -36,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setNavVisibility(boolean visibile){
+
         if (visibile){
             findViewById(R.id.nav_view).setVisibility(View.VISIBLE);
         } else {
@@ -44,4 +69,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+
+            onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

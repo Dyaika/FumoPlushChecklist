@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.databinding.FragmentCollectionBinding;
 
 public class CollectionFragment extends Fragment {
@@ -26,6 +29,13 @@ public class CollectionFragment extends Fragment {
         final TextView textView = binding.textDashboard;
         textView.setText("Collection");
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        AppCompatActivity activity = (AppCompatActivity) requireActivity();
+        ((MainActivity)activity).setNavVisibility(true);
     }
 
     @Override
