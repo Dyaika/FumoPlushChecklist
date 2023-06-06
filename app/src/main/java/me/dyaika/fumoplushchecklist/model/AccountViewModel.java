@@ -81,4 +81,21 @@ public class AccountViewModel extends ViewModel {
         }
         return false;
     }
+    public boolean isFavorite(int item_id){
+        if (user.getValue() != null){
+            return user.getValue().getFavorite().contains(item_id);
+        }
+        return false;
+    }
+    public void setFavorite(int item_id, boolean favorite){
+        if (user.getValue() != null){
+            if (favorite){
+                user.getValue().getFavorite().add(item_id);
+
+            } else {
+                user.getValue().getFavorite().remove(item_id);
+
+            }
+        }
+    }
 }

@@ -47,11 +47,11 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         AppCompatActivity activity = (AppCompatActivity) requireActivity();
-        ((MainActivity)activity).setNavVisibility(false);
+        ((MainActivity)activity).setNavVisibility(false);/*
         actionBar = activity.getSupportActionBar(); // или Toolbar toolbar = activity.findViewById(R.id.toolbar);
         if (actionBar != null) {
             actionBar.setTitle("Log in");
-        }
+        }*/
         return inflater.inflate(R.layout.fragment_login, container, false);
 
     }

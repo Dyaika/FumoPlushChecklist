@@ -53,10 +53,11 @@ public class SignupFragment extends Fragment {
                              Bundle savedInstanceState) {
         AppCompatActivity activity = (AppCompatActivity) requireActivity();
         ((MainActivity)activity).setNavVisibility(false);
+        /*
         actionBar = activity.getSupportActionBar(); // или Toolbar toolbar = activity.findViewById(R.id.toolbar);
         if (actionBar != null) {
             actionBar.setTitle("Sign up");
-        }
+        }*/
         return inflater.inflate(R.layout.fragment_signup, container, false);
     }
 

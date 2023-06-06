@@ -1,4 +1,4 @@
-package me.dyaika.fumoplushchecklist.ui.collection;
+package me.dyaika.fumoplushchecklist.ui.items;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.databinding.FragmentCollectionBinding;
