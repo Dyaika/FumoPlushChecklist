@@ -5,6 +5,9 @@ package me.dyaika.fumoplushchecklist.logic;
 import static me.dyaika.fumoplushchecklist.logic.MySecurity.decrypt;
 import static me.dyaika.fumoplushchecklist.logic.MySecurity.encrypt;
 
+import android.util.Log;
+
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -22,6 +25,7 @@ import me.dyaika.fumoplushchecklist.pojo.User;
 
 public class AccountViewModel extends ViewModel {
     private static final String TAG = "account view-model";
+    private MutableLiveData<Boolean> loading_complete = new MutableLiveData<Boolean>(false);
     private MutableLiveData<User> user = new MutableLiveData<>(null);
     private MutableLiveData<Map<Integer, User>> encryptedUsersLiveData = new MutableLiveData<>();
     private MutableLiveData<Boolean> logged_in = new MutableLiveData<>(false);
@@ -52,7 +56,7 @@ public class AccountViewModel extends ViewModel {
                     }
                 }
                 encryptedUsersLiveData.postValue(userMap);
-                System.out.println(userMap.size());
+                loading_complete.postValue(true);
             }
 
             @Override
@@ -75,6 +79,14 @@ public class AccountViewModel extends ViewModel {
     public void updateUser(User user, int key) {
         // Обновление данных пользователя в Firebase
         databaseReference.child(String.valueOf(key)).setValue(new FBUser(user));
+    }
+
+    public LiveData<Map<Integer, User>> getEncryptedUsersLiveData() {
+        return encryptedUsersLiveData;
+    }
+
+    public LiveData<Boolean> getLoadingComplete() {
+        return loading_complete;
     }
 
     public void deleteUser(int key) {
@@ -102,11 +114,27 @@ public class AccountViewModel extends ViewModel {
                                 decrypt(encryptedUser.getLogin(), key),
                                 encryptedUser.getPassword());
                         user1.setFavorite(encryptedUser.getFavorite());
-                        user.setValue(user1);
+                        user.postValue(user1);//!
                     }
                 }
             }
 
+        }
+    }
+    public void connectLocalUserToRemote(String login, String firstname, String lastname){
+        if (encryptedUsersLiveData.getValue() != null){
+            User user1 = encryptedUsersLiveData.getValue().get(login.hashCode());
+            if (user1 != null){
+                Log.d("account", user1.getFavorite().toString());
+                User decryptedUser = new User(
+                        firstname,
+                        lastname,
+                        login,
+                        user1.getPassword());
+                decryptedUser.setFavorite(user1.getFavorite());
+                user.postValue(decryptedUser);
+                logged_in.postValue(true);
+            }
         }
     }
 

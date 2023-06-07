@@ -46,7 +46,9 @@ public class User implements Serializable {
 
     public void setFavorite(Set<Integer> favorite) {
         this.favorite.clear();
-        this.favorite.addAll(favorite);
+        if (favorite != null){
+            this.favorite.addAll(favorite);
+        }
     }
     public void copyFBUser(FBUser user){
         this.firstname = user.getFirstname();

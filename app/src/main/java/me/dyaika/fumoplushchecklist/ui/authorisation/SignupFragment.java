@@ -21,6 +21,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.R;
 import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
+import me.dyaika.fumoplushchecklist.pojo.User;
 
 public class SignupFragment extends Fragment {
     private static final String TAG = "signup fragment";
@@ -86,6 +87,7 @@ public class SignupFragment extends Fragment {
             if (accountViewModel.checkRegistration(firstname, lastname, login, password1, password2)){
                 accountViewModel.checkAuthentication(login, password1);
                 if (Boolean.TRUE.equals(accountViewModel.isLoggedIn().getValue())){
+                    User user = accountViewModel.getUser().getValue();
                     navController.navigate(R.id.action_signupFragment_to_navigation_profile);
                     Toast.makeText(getContext(), "Успешно", Toast.LENGTH_SHORT).show();
                 } else {

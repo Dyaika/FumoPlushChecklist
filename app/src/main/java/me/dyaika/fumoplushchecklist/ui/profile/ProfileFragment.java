@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.R;
 import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
+import me.dyaika.fumoplushchecklist.pojo.User;
 
 public class ProfileFragment extends Fragment {
     private boolean logged_in = false;
@@ -42,6 +43,11 @@ public class ProfileFragment extends Fragment {
         logged_in = Boolean.TRUE.equals(accountViewModel.isLoggedIn().getValue());
         // Two different layouts for user who is logged in and not
         if (logged_in){
+            User user = accountViewModel.getUser().getValue();
+            ((MainActivity) requireActivity()).saveAuthorisation(
+                    user.getLogin(),
+                    user.getFirstname(),
+                    user.getLastname());
             return inflater.inflate(R.layout.fragment_user_profile, container, false);
         } else {
             return inflater.inflate(R.layout.fragment_empty_profile, container, false);
@@ -71,6 +77,7 @@ public class ProfileFragment extends Fragment {
         if (logged_in){
             exit_button.setOnClickListener(view -> {
                 accountViewModel.logout();
+                ((MainActivity) requireActivity()).removeAuthorisation();
                 navController.navigate(R.id.action_navigation_profile_to_loginFragment);
 
             });

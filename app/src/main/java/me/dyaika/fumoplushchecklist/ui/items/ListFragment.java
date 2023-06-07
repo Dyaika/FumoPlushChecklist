@@ -52,7 +52,6 @@ public class ListFragment extends Fragment {
         MainActivity activity = (MainActivity) getActivity();
         //activity.setNavVisibility(true);
         List<Item> items = new ArrayList<>();
-        itemsViewModel.loadItems(getContext());
 
 
         // Inflate the layout for this fragment

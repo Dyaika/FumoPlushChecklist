@@ -1,5 +1,7 @@
 package me.dyaika.fumoplushchecklist;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,11 +11,14 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import java.util.Map;
 
 import me.dyaika.fumoplushchecklist.databinding.ActivityMainBinding;
 import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private AccountViewModel accountViewModel;
     private ItemsViewModel itemsViewModel;
     private ViewModelProvider viewModelProvider;
+    SharedPreferences sharedPreferences;
     private boolean logged_in;
     private User user;
     public ViewModelProvider getViewModelProvider() {
@@ -39,6 +45,41 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void prepareSharedPreferences(){
+        sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
+    }
+    public void saveAuthorisation(String login, String firstname, String lastname){
+        if (sharedPreferences == null){
+            prepareSharedPreferences();
+        }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("LOGIN", login);
+        editor.putString("FIRSTNAME", firstname);
+        editor.putString("LASTNAME", lastname);
+        editor.apply();
+    }
+    public void removeAuthorisation(){
+        if (sharedPreferences == null){
+            prepareSharedPreferences();
+        }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("LOGIN");
+        editor.remove("FIRSTNAME");
+        editor.remove("LASTNAME");
+        editor.apply();
+    }
+    public void authorise(){
+        if (sharedPreferences == null){
+            prepareSharedPreferences();
+        }
+        String login = sharedPreferences.getString("LOGIN", null);
+        String firstname = sharedPreferences.getString("FIRSTNAME", null);
+        String lastname = sharedPreferences.getString("LASTNAME", null);
+        if (login != null && lastname != null && firstname != null){
+            accountViewModel.connectLocalUserToRemote(login, firstname, lastname);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +88,17 @@ public class MainActivity extends AppCompatActivity {
         initViewModelProvider();
         accountViewModel = viewModelProvider.get(AccountViewModel.class);
         itemsViewModel = viewModelProvider.get(ItemsViewModel.class);
+        itemsViewModel.loadItems(this);
+        accountViewModel.getLoadingComplete().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean){
+                    System.out.println(accountViewModel.getEncryptedUsersLiveData().getValue().get(-1317312109).getFavorite().toString());
+                    authorise();
+
+                }
+            }
+        });
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -90,12 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         DatabaseReference ref = accountViewModel.getDatabaseReference();
-
-        accountViewModel.createUser(new User(
-                MySecurity.encrypt("Александр", "qwertyuiopQWERTYUIOP"),
-                MySecurity.encrypt("Разшильдяев", "qwertyuiopQWERTYUIOP"),
-                MySecurity.encrypt("dyaika", "qwertyuiopQWERTYUIOP"),
-                MySecurity.encrypt("qwertyuiop", "qwertyuiopQWERTYUIOP").hashCode()), "dyaika".hashCode());
 
     }
 

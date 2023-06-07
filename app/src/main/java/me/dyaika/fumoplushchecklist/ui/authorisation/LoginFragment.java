@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.R;
 import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
+import me.dyaika.fumoplushchecklist.pojo.User;
 
 public class LoginFragment extends Fragment {
     private ActionBar actionBar;
@@ -73,6 +75,7 @@ public class LoginFragment extends Fragment {
             String login = login_text.getText().toString();
             accountViewModel.checkAuthentication(login, password);
             if (Boolean.TRUE.equals(accountViewModel.isLoggedIn().getValue())){
+                User user = accountViewModel.getUser().getValue();
                 navController.navigate(R.id.action_loginFragment_to_navigation_profile);
                 Toast.makeText(getContext(), "Успешно", Toast.LENGTH_SHORT).show();
 
