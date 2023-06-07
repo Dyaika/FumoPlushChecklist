@@ -45,20 +45,27 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Item item = items.get(position);
         holder.text.setText(item.getName());
+        holder.rarity.setText(item.getRarity());
+        holder.type.setText(item.getType());
         holder.image.setImageResource(R.drawable.ic_launcher_background);
         Picasso.get()
                 .load(item.getImage_url())
+                //.transform(new RoundedCornersTransformation(10, 0))
                 .into(holder.image);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public ImageView image;
         public TextView text;
+        public TextView rarity;
+        public TextView type;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.icon);
             text = itemView.findViewById(R.id.text);
+            type = itemView.findViewById(R.id.type);
+            rarity = itemView.findViewById(R.id.rarity);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,5 +84,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
+    }
+    public void update(List<Item> items1){
+        this.items = items1;
+        notifyDataSetChanged();
     }
 }

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.R;
-import me.dyaika.fumoplushchecklist.model.AccountViewModel;
+import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
 
 public class SignupFragment extends Fragment {
     private static final String TAG = "signup fragment";
@@ -84,7 +83,7 @@ public class SignupFragment extends Fragment {
             String password1 = password1_text.getText().toString();
             String password2 = password2_text.getText().toString();
 
-            if (AccountViewModel.checkRegistration(firstname, lastname, login, password1, password2)){
+            if (accountViewModel.checkRegistration(firstname, lastname, login, password1, password2)){
                 accountViewModel.checkAuthentication(login, password1);
                 if (Boolean.TRUE.equals(accountViewModel.isLoggedIn().getValue())){
                     navController.navigate(R.id.action_signupFragment_to_navigation_profile);
@@ -93,13 +92,13 @@ public class SignupFragment extends Fragment {
                     Toast.makeText(getContext(), "Непредвиденная ошибка", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                if (!AccountViewModel.checkNewUserdata(firstname, lastname)){
+                if (!accountViewModel.checkNewUserdata(firstname, lastname)){
                     Toast.makeText(getContext(), "Неподходящая длина имени/фамилии", Toast.LENGTH_SHORT).show();
                 }
-                if (!AccountViewModel.checkNewPassword(password1, password2)){
+                if (!accountViewModel.checkNewPassword(password1, password2)){
                     Toast.makeText(getContext(), "Неподходящий пароль", Toast.LENGTH_SHORT).show();
                 }
-                if (!AccountViewModel.checkNewLogin(login)){
+                if (!accountViewModel.checkNewLogin(login)){
                     Toast.makeText(getContext(), "Такой логин уже есть", Toast.LENGTH_SHORT).show();
                 }
             }

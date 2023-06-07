@@ -11,13 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.R;
-import me.dyaika.fumoplushchecklist.model.AccountViewModel;
+import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
 
 public class ProfileFragment extends Fragment {
     private boolean logged_in = false;

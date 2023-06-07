@@ -1,11 +1,12 @@
 package me.dyaika.fumoplushchecklist;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,9 +16,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import me.dyaika.fumoplushchecklist.databinding.ActivityMainBinding;
-import me.dyaika.fumoplushchecklist.model.AccountViewModel;
-import me.dyaika.fumoplushchecklist.model.ItemsViewModel;
-import me.dyaika.fumoplushchecklist.model.MySecurity;
+import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
+import me.dyaika.fumoplushchecklist.logic.ItemsViewModel;
+import me.dyaika.fumoplushchecklist.logic.MySecurity;
 import me.dyaika.fumoplushchecklist.pojo.User;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
 
         initViewModelProvider();
         accountViewModel = viewModelProvider.get(AccountViewModel.class);
+        itemsViewModel = viewModelProvider.get(ItemsViewModel.class);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -71,6 +74,28 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        accountViewModel.updateReference();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        DatabaseReference ref = accountViewModel.getDatabaseReference();
+
+        accountViewModel.createUser(new User(
+                MySecurity.encrypt("Александр", "qwertyuiopQWERTYUIOP"),
+                MySecurity.encrypt("Разшильдяев", "qwertyuiopQWERTYUIOP"),
+                MySecurity.encrypt("dyaika", "qwertyuiopQWERTYUIOP"),
+                MySecurity.encrypt("qwertyuiop", "qwertyuiopQWERTYUIOP").hashCode()), "dyaika".hashCode());
 
     }
 

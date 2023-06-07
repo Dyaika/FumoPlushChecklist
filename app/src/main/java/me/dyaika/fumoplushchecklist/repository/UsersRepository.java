@@ -1,5 +1,15 @@
 package me.dyaika.fumoplushchecklist.repository;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.util.Log;
+
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,15 +24,17 @@ public class UsersRepository {
     private static Map<Integer, User> users;
     public static void loadUsers(){
         users = new HashMap<>();
-        users.put(-1317312109, new User(
+        User user1 = new User(
                 "8m68aNkg1C0Ac+Vu6hPznp9T6KwohPLtME12aa2n/Cw=\n",
                 "yopg3SNiCNdHKw0yOCbCxRGm+4TpUJ+4GDOAYet0tl0=\n",
                 "keFQmWI8RXtWrdFCu6d+1Q==",
-                -1697216807));
+                -1697216807);
         Set<Integer> favorite = new HashSet<>();
-        favorite.add(0);
-        users.get(-1317312109).setFavorite(favorite);
+        favorite.add(4);
+        user1.setFavorite(favorite);
+        users.put(-1317312109,user1);
     }
+
 
     public static User getEncryptedUserByKey(int key){
         if (users == null){

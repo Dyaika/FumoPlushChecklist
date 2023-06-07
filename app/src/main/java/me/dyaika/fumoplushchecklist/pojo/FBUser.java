@@ -1,15 +1,17 @@
 package me.dyaika.fumoplushchecklist.pojo;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class User implements Serializable {
+public class FBUser implements Serializable {
     private String firstname;
     private String lastname;
     private String login;
-    private Set<Integer> favorite;
+    private List<Integer> favorite;
 
     public String getFirstname() {
         return firstname;
@@ -29,31 +31,51 @@ public class User implements Serializable {
         return password;
     }
 
-    public User(String firstname, String lastname, String login, int password) {
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setFavorite(List<Integer> favorite) {
+        this.favorite = favorite;
+    }
+
+    public void setPassword(int password) {
+        this.password = password;
+    }
+
+    public FBUser() {
+        this.favorite = new ArrayList<>();
+    }
+
+    public FBUser(String firstname, String lastname, String login, int password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.login = login;
         this.password = password;
-        this.favorite = new HashSet<>();
+        this.favorite = new ArrayList<>();
     }
-    public User(FBUser user){
-        copyFBUser(user);
+    public FBUser(User user){
+        copyUser(user);
     }
 
-    public Set<Integer> getFavorite() {
+    public List<Integer> getFavorite() {
         return favorite;
     }
 
-    public void setFavorite(Set<Integer> favorite) {
-        this.favorite.clear();
-        this.favorite.addAll(favorite);
-    }
-    public void copyFBUser(FBUser user){
+    public void copyUser(User user){
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();
         this.login = user.getLogin();
         this.password = user.getPassword();
-        this.favorite = new HashSet<>();
+        this.favorite = new ArrayList<>();
         this.favorite.addAll(user.getFavorite());
     }
 }

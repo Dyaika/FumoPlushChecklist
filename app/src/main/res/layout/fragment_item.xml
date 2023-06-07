@@ -8,8 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -19,133 +18,185 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.items.ItemFragment">
 
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background" />
-
-        <TextView
-            android:id="@+id/name"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_extrabold"
-            android:text="Neko Miko Reimu"
-            android:textColor="@color/maintext"
-            android:textSize="24sp" />
+            android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <LinearLayout
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:fontFamily="@font/nunito_extrabold"
+                android:text="Neko Miko Reimu"
+                android:textColor="@color/maintext"
+                android:textSize="24sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Описание"
+                android:textColor="@color/maintext"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_medium"
+                android:text="Что-то пошло не так"
+                android:textColor="@color/maintext"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_marginVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Описание"
-                    android:textColor="@color/maintext"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_medium"
-                    android:text="Что-то пошло не так"
+                    android:text="Версия"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/version"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_medium"
+                    android:text="V2"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="Версия"
-                        android:textColor="@color/maintext"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/version"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nunito_medium"
-                        android:text="V2"
-                        android:textColor="@color/maintext"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="Год выпуска"
-                        android:textColor="@color/maintext"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/year"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nunito_medium"
-                        android:text="2018"
-                        android:textColor="@color/maintext"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nunito_bold"
-                        android:text="Официальная стоимость"
-                        android:textColor="@color/maintext"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/cost"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nunito_medium"
-                        android:text="3600"
-                        android:textColor="@color/maintext"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
             </LinearLayout>
-        </ScrollView>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_marginVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Год выпуска"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_medium"
+                    android:text="2018"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Официальная стоимость"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/cost"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_medium"
+                    android:text="3600"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Тип"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_medium"
+                    android:text="Regular Fumo"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginVertical="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Редкость"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/rarity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunito_medium"
+                    android:text="Common"
+                    android:textColor="@color/maintext"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <Button
         android:layout_marginVertical="8dp"
@@ -159,10 +210,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-    <CheckBox
+    <ToggleButton
+        android:layout_margin="16dp"
         android:id="@+id/favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="@drawable/toggle_selector"
+        android:textOn=""
+        android:textOff=""
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:checked="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

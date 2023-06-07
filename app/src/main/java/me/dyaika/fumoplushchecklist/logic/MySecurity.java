@@ -1,4 +1,4 @@
-package me.dyaika.fumoplushchecklist.model;
+package me.dyaika.fumoplushchecklist.logic;
 
 import android.util.Base64;
 

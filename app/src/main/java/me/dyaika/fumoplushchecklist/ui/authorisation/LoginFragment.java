@@ -20,7 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.R;
-import me.dyaika.fumoplushchecklist.model.AccountViewModel;
+import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
 
 public class LoginFragment extends Fragment {
     private ActionBar actionBar;

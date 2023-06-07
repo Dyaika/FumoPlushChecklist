@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,18 +13,20 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.R;
 import me.dyaika.fumoplushchecklist.databinding.FragmentListBinding;
+import me.dyaika.fumoplushchecklist.logic.ItemsViewModel;
 import me.dyaika.fumoplushchecklist.pojo.Item;
-import me.dyaika.fumoplushchecklist.repository.ItemsRepository;
 
 public class ListFragment extends Fragment {
 
     private FragmentListBinding binding;
     private NavController navController;
+    private ItemsViewModel itemsViewModel;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,6 +35,9 @@ public class ListFragment extends Fragment {
 
         binding = FragmentListBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        itemsViewModel = ((MainActivity)requireActivity())
+                .getViewModelProvider()
+                .get(ItemsViewModel.class);
 
 
         return root;
@@ -48,7 +51,10 @@ public class ListFragment extends Fragment {
 
         MainActivity activity = (MainActivity) getActivity();
         //activity.setNavVisibility(true);
-        List<Item> items = ItemsRepository.getItems();
+        List<Item> items = new ArrayList<>();
+        itemsViewModel.loadItems(getContext());
+
+
         // Inflate the layout for this fragment
         RecyclerView recyclerView = view.findViewById(R.id.itemsList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -64,6 +70,12 @@ public class ListFragment extends Fragment {
             }
         });
         recyclerView.setAdapter(adapter);
+        itemsViewModel.getItemsLiveData().observe(requireActivity(), itemsMap -> {
+            // Здесь вы можете обновить RecyclerView или другие элементы пользовательского интерфейса с новым списком объектов
+            if (itemsMap != null){
+                adapter.update(new ArrayList<>(itemsMap.values()));
+            }
+        });
     }
 
     @Override

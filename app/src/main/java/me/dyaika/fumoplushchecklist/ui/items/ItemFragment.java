@@ -12,18 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.Checkable;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.squareup.picasso.Picasso;
 
 import me.dyaika.fumoplushchecklist.MainActivity;
 import me.dyaika.fumoplushchecklist.R;
-import me.dyaika.fumoplushchecklist.model.AccountViewModel;
+import me.dyaika.fumoplushchecklist.logic.AccountViewModel;
+import me.dyaika.fumoplushchecklist.logic.ItemsViewModel;
 import me.dyaika.fumoplushchecklist.pojo.Item;
-import me.dyaika.fumoplushchecklist.repository.ItemsRepository;
 
 public class ItemFragment extends Fragment {
 
@@ -37,8 +38,11 @@ public class ItemFragment extends Fragment {
     private Button storeButton;
     private TextView yearView;
     private TextView versionView;
-    private CheckBox favorite;
+    private TextView typeView;
+    private TextView rarityView;
+    private ToggleButton favorite;
     AccountViewModel accountViewModel;
+    ItemsViewModel itemsViewModel;
 
     private int fumo_id;
 
@@ -53,12 +57,29 @@ public class ItemFragment extends Fragment {
         accountViewModel = ((MainActivity)requireActivity())
                 .getViewModelProvider()
                 .get(AccountViewModel.class);
+        itemsViewModel = ((MainActivity)requireActivity())
+                .getViewModelProvider()
+                .get(ItemsViewModel.class);
         if (getArguments() != null) {
             fumo_id = getArguments().getInt(ARG_PARAM);
         } else {
             fumo_id = -1;
         }
-        item = ItemsRepository.getItemByID(fumo_id);
+        item = itemsViewModel.getItemsLiveData().getValue().get(fumo_id);
+        if (item == null){
+            item = new Item(
+                    0,
+                    "Такого товара нет",
+                    "-",
+                    0,
+                    "-",
+                    0,
+                    "-",
+                    "Мягкие Игрушки Фумо Fumo - это мини версии знаменитых героев и персонажей из серии компьютерных игр Touhou Project (Проект \"Восток\"). Сделаны из качественного хлопка и плюша, приятны на ощупь, безопасные элементы.",
+                    "https://i.imgur.com/S5Watmq.jpg",
+                    "https://www.gift-gift.jp/nui/nui00001.html"
+            );
+        }
     }
 
     @Override
@@ -79,6 +100,8 @@ public class ItemFragment extends Fragment {
         favorite = view.findViewById(R.id.favorite);
         yearView = view.findViewById(R.id.year);
         versionView = view.findViewById(R.id.version);
+        typeView = view.findViewById(R.id.type);
+        rarityView = view.findViewById(R.id.rarity);
         contentInflation();
 
     }
@@ -101,9 +124,18 @@ public class ItemFragment extends Fragment {
         if (Boolean.FALSE.equals(accountViewModel.isLoggedIn().getValue())){
             favorite.setVisibility(View.GONE);
         } else {
-            favorite.setChecked(accountViewModel.isFavorite(fumo_id));
+
+            favorite.setChecked(accountViewModel.isFavorite(item.getId()));
+            favorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    accountViewModel.setFavorite(item.getId(), b);
+                }
+            });
         }
         yearView.setText(item.getRelease_year() + "");
         versionView.setText(item.getVersion());
+        typeView.setText(item.getType());
+        rarityView.setText(item.getRarity());
     }
 }
