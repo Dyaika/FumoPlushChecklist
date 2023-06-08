@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="34sp"
-        android:text="Ну кринж какой то" />
+        android:text="@string/no_name" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +28,7 @@
             android:background="@drawable/rounded_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Выйти"
+            android:text="@string/exit"
             android:layout_marginVertical="8dp"
             android:padding="12dp"/>
         <Button
@@ -39,7 +39,7 @@
             android:background="@drawable/rounded_red_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Удалить профиль"
+            android:text="@string/delete_profile"
             android:padding="12dp"
             android:backgroundTint="@android:color/holo_red_dark"/>
 

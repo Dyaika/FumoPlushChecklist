@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Item Text" />
+            android:text="@string/placeholder_list" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Тип:" />
+                android:text="@string/type" />
             <TextView
                 android:id="@+id/type"
                 android:fontFamily="@font/nunito_medium"
@@ -46,7 +46,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Item Text" />
+                android:text="@string/placeholder_list" />
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="4dp"
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Редкость:" />
+                android:text="@string/rarity" />
             <TextView
                 android:id="@+id/rarity"
                 android:fontFamily="@font/nunito_medium"
@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Item Text" />
+                android:text="@string/placeholder_list" />
         </LinearLayout>
 
     </LinearLayout>

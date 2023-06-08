@@ -14,7 +14,7 @@
         android:orientation="vertical">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/firstname_text"
-            android:hint="Имя"
+            android:hint="@string/name"
             android:background="@drawable/edittext_border"
             android:padding="16dp"
             android:layout_marginVertical="8dp"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"/>
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/lastname_text"
-            android:hint="Фамилия"
+            android:hint="@string/lastname"
             android:background="@drawable/edittext_border"
             android:padding="16dp"
             android:layout_marginVertical="8dp"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"/>
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/login_text"
-            android:hint="Логин"
+            android:hint="@string/username"
             android:background="@drawable/edittext_border"
             android:padding="16dp"
             android:layout_marginVertical="8dp"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"/>
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password1_text"
-            android:hint="Пароль"
+            android:hint="@string/password"
             android:background="@drawable/edittext_border"
             android:padding="16dp"
             android:layout_marginVertical="8dp"
@@ -57,7 +57,7 @@
             android:inputType="textPassword"/>
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password2_text"
-            android:hint="Повторите пароль"
+            android:hint="@string/password_again"
             android:background="@drawable/edittext_border"
             android:padding="16dp"
             android:layout_marginVertical="8dp"
@@ -70,7 +70,7 @@
             android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Зарегистрироваться"
+            android:text="@string/sign_in"
             android:layout_marginVertical="8dp"
             android:padding="12dp"
             android:textSize="18sp"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:padding="16dp"
-            android:text="Уже есть аккаунт? Войдите"
+            android:text="@string/already_have_account"
             android:textColor="@color/maintext"
             android:fontFamily="@font/nunito_regular"/>
     </LinearLayout>

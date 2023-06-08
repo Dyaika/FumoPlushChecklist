@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/nunito_semibold"
-                android:text="Item Text"
+                android:text="@string/placeholder_list"
                 android:textColor="@color/maintext"
                 android:textSize="20sp" />
 
@@ -57,7 +57,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_medium"
-                    android:text="Item Text"
+                    android:text="@string/placeholder_list"
                     android:textColor="@color/maintext"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -75,7 +75,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_medium"
-                    android:text="Item Text"
+                    android:text="@string/placeholder_list"
                     android:textColor="@color/maintext"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -94,7 +94,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:background="@drawable/ic_delete_black_24dp"
-                android:contentDescription="delete"
+                android:contentDescription="@string/delete"
                 android:padding="8dp" />
 
         </LinearLayout>

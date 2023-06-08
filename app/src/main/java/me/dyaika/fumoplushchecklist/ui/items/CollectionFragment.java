@@ -36,7 +36,7 @@ public class CollectionFragment extends Fragment {
     private NavController navController;
     private ItemsViewModel itemsViewModel;
     private AccountViewModel accountViewModel;
-    TextView placeholder;
+    View placeholder;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

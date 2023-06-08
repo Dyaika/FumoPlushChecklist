@@ -14,7 +14,7 @@
         android:orientation="vertical">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/login_text"
-            android:hint="Логин"
+            android:hint="@string/username"
             android:background="@drawable/edittext_border"
             android:padding="16dp"
             android:layout_marginVertical="8dp"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"/>
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_text"
-            android:hint="Пароль"
+            android:hint="@string/password"
             android:background="@drawable/edittext_border"
             android:padding="16dp"
             android:layout_marginVertical="8dp"
@@ -37,7 +37,7 @@
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Войти"
+            android:text="@string/log_in"
             android:layout_marginVertical="8dp"
             android:padding="12dp"
             android:textSize="18sp"
@@ -50,7 +50,7 @@
             android:textAlignment="center"
             android:padding="16dp"
             android:textColor="@color/maintext"
-            android:text="Создать аккаунт"/>
+            android:text="@string/create_account"/>
     </LinearLayout>
 
 

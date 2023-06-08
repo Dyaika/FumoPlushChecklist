@@ -3,25 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.items.CollectionFragment">
-    <TextView
-        android:id="@+id/placeholder"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:paddingVertical="16dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textColor="@color/maintext"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Здесь будет отображаться коллекция, когда вы ее соберете!"/>
+        android:orientation="vertical"
+        android:id="@+id/placeholder"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:text="@string/empty_collection_text"
+            android:textColor="@color/maintext"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cirno" />
+
+    </LinearLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/itemsList"
             android:layout_width="match_parent"

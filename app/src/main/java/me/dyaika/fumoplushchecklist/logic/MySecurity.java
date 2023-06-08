@@ -26,7 +26,7 @@ public class MySecurity {
             return res;
         } catch (Exception e) {
             e.printStackTrace();
-            return "WATAF";
+            return "ATAF";
         }
     }
 
@@ -42,7 +42,7 @@ public class MySecurity {
             return new String(plainText, "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
-            return "FATAW";
+            return "ATAW";
         }
     }
 }

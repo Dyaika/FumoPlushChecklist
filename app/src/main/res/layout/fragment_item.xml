@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito_extrabold"
-                android:text="Neko Miko Reimu"
+                android:text="@string/neko_miko_reimu"
                 android:textColor="@color/maintext"
                 android:textSize="24sp" />
 
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito_bold"
-                android:text="Описание"
+                android:text="@string/description"
                 android:textColor="@color/maintext"
                 android:textSize="20sp" />
 
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito_medium"
-                android:text="Что-то пошло не так"
+                android:text="@string/something_went_wrong"
                 android:textColor="@color/maintext"
                 android:textSize="16sp" />
 
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Версия"
+                    android:text="@string/version"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_medium"
-                    android:text="V2"
+                    android:text="@string/default_version"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Год выпуска"
+                    android:text="@string/year"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_medium"
-                    android:text="2018"
+                    android:text="@string/default_year"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -126,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Официальная стоимость"
+                    android:text="@string/price"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_medium"
-                    android:text="3600"
+                    android:text="@string/default_price"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Тип"
+                    android:text="@string/type"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_medium"
-                    android:text="Regular Fumo"
+                    android:text="@string/default_type"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -178,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_bold"
-                    android:text="Редкость"
+                    android:text="@string/rarity"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -188,7 +188,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_medium"
-                    android:text="Common"
+                    android:text="@string/default_rarity"
                     android:textColor="@color/maintext"
                     android:textSize="16sp" />
 
@@ -207,7 +207,7 @@
         android:fontFamily="@font/nunito_extrabold"
         android:background="@drawable/rounded_button"
         android:padding="12dp"
-        android:text="Где купить"
+        android:text="@string/where_linthalo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
