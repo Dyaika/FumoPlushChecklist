@@ -92,11 +92,16 @@ public class AccountViewModel extends ViewModel {
     public void deleteUser(int key) {
         // Удаление пользователя из Firebase
         databaseReference.child(String.valueOf(key)).removeValue();
+        Map<Integer, User> userMap = encryptedUsersLiveData.getValue();
+        if (userMap != null){
+            userMap.remove(key);
+            encryptedUsersLiveData.postValue(userMap);
+        }
     }
 
     public void logout(){
-        user.setValue(null);
-        logged_in.setValue(false);
+        user.postValue(null);
+        logged_in.postValue(false);
     }
 
     public void checkAuthentication(String login, String password){
@@ -184,13 +189,15 @@ public class AccountViewModel extends ViewModel {
         return false;
     }
     public void setFavorite(int item_id, boolean favorite){
-        if (user.getValue() != null){
+        User user1 = user.getValue();
+        if (user1 != null){
             if (favorite){
-                user.getValue().getFavorite().add(item_id);
+                user1.getFavorite().add(item_id);
             } else {
-                user.getValue().getFavorite().remove(item_id);
+                user1.getFavorite().remove(item_id);
 
             }
+            user.postValue(user1);
             if (encryptedUsersLiveData.getValue() != null){
                 User tempuser = encryptedUsersLiveData.getValue().get(user.getValue().getLogin().hashCode());
                 if (tempuser != null){

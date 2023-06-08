@@ -11,6 +11,8 @@
         android:label="@string/title_list"
         tools:layout="@layout/fragment_list" >
         <action
+            app:enterAnim="@anim/slide_in_top"
+            app:popEnterAnim="@anim/slide_in_bottom"
             android:id="@+id/action_navigation_list_to_itemFragment"
             app:destination="@id/itemFragment" />
     </fragment>
@@ -21,6 +23,8 @@
         android:label="@string/title_collection"
         tools:layout="@layout/fragment_collection" >
         <action
+            app:enterAnim="@anim/slide_in_top"
+            app:popEnterAnim="@anim/slide_in_bottom"
             android:id="@+id/action_navigation_collection_to_itemFragment"
             app:destination="@id/itemFragment" />
     </fragment>
@@ -31,16 +35,20 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_user_profile" >
         <action
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_right"
             android:id="@+id/action_navigation_profile_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_right"
             android:id="@+id/action_navigation_profile_to_signupFragment"
             app:destination="@id/signupFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="me.dyaika.fumoplushchecklist.ui.authorisation.LoginFragment"
-        android:label="Log in"
+        android:label="Вход"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_navigation_profile"
@@ -52,7 +60,7 @@
     <fragment
         android:id="@+id/signupFragment"
         android:name="me.dyaika.fumoplushchecklist.ui.authorisation.SignupFragment"
-        android:label="Sign up"
+        android:label="Регистрация"
         tools:layout="@layout/fragment_signup" >
         <action
             android:id="@+id/action_signupFragment_to_navigation_profile"
@@ -64,6 +72,6 @@
     <fragment
         android:id="@+id/itemFragment"
         android:name="me.dyaika.fumoplushchecklist.ui.items.ItemFragment"
-        android:label="Item"
+        android:label="FumoFumo"
         tools:layout="@layout/fragment_item" />
 </navigation>

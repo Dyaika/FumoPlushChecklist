@@ -14,22 +14,26 @@
         android:orientation="vertical">
 
         <Button
+            android:layout_marginVertical="8dp"
             android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Зарегистрироваться"
-            android:textStyle="bold"
-            android:fontFamily="@font/nunito_regular"
-            android:padding="16dp"/>
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:background="@drawable/rounded_button"/>
 
         <Button
+            android:layout_marginVertical="8dp"
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Войти"
-            android:textStyle="bold"
-            android:fontFamily="@font/nunito_regular"
-            android:padding="16dp"/>
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:background="@drawable/rounded_button"/>
 
     </LinearLayout>
 
